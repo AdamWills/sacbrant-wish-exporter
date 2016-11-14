@@ -1,0 +1,52 @@
+#sacbrantWishForm * {
+  box-sizing: border-box;
+}
+
+#sacbrantWishForm .form-group-left {
+  float: left;
+  width: 50%;
+  padding-right: 1em;
+}
+
+#sacbrantWishForm .form-group-right {
+  float: right;
+  width: 50%;
+}
+
+#sacbrantWishForm .form-group-right:after {
+  clear: both;
+}
+
+#sacbrantWishForm label {
+  display: block;
+  font-weight: bold;
+}
+
+#sacbrantWishForm input[type=text] {
+  width: 100%;
+}
+
+#sacbrantWishForm .form-group-submit  {
+  margin-top: 1rem;
+  text-align: right;
+}
+
+#sacbrantWishForm .form-field-invalid input[type=text] {
+  border-color: #dc3232;
+  -webkit-box-shadow: 0 0 2px rgba( 204, 0, 0, 0.8 );
+ 	box-shadow: 0 0 2px rgba( 204, 0, 0, 0.8 );
+}
+
+.clearfix:after {
+   visibility: hidden;
+   display: block;
+   font-size: 0;
+   content: " ";
+   clear: both;
+   height: 0;
+ }
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */
