@@ -83,10 +83,10 @@ class Sacbrant_Wish_Exporter_Admin {
 
 	public function display_sacbrant_wish_widget() {
 		include_once('partials/_widget-form.php');
-		if (isset($_POST['wish-report-from'])) {
-			$data = $this->get_wish_data();
-			$this->generate_export($entries, '2016', '2017');
-		}
+		// if (isset($_POST['wish-report-from'])) {
+		// 	$data = $this->get_wish_data();
+		// 	$this->generate_export($entries, '2016', '2017');
+		// }
 		// $entries = $this->get_wish_data();
 		// echo '<pre><textarea style="width:100%" rows="200">';
 		// echo $this->convert_data_to_xml($entries, '2016', '2017');
@@ -99,9 +99,8 @@ class Sacbrant_Wish_Exporter_Admin {
 		$form_id = 1;
 		$search_criteria['start_date'] = $start_date;
 		$search_criteria['end_date'] = $end_date;
-
-		$entries = GFAPI::get_entries($form_id, $search_criteria);
-
+		$paging = array( 'offset' => 0, 'page_size' => 200 );
+		$entries = GFAPI::get_entries($form_id, $search_criteria, array(), $paging);
 		return $entries;
 	}
 
@@ -122,6 +121,7 @@ class Sacbrant_Wish_Exporter_Admin {
 		$end_date = $_POST['wish-report-to'];
 		check_admin_referer('generate_wish_export', 'sac-wish-form-submit');
 		$entries = $this->get_wish_data($start_date, $end_date);
+
 		$date_generated = date('Y-m-d-H:i:s', time());
 		$xml = new SimpleXMLElement('<entries/>');
 		$xml->addAttribute('generated', $date_generated);
